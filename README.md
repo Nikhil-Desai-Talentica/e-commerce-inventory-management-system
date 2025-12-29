@@ -1,2 +1,2 @@
 # e-commerce-inventory-management-system
-An e-commerce inventory management system built as a part of AI-Native engineer certfication
+An e-commerce inventory management system built as an assignment towards the AI-Native engineer certification
