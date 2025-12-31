@@ -1,0 +1,23 @@
+# .gitignore
+
+# Python
+__pycache__/
+
+# Virtual Environments
+.venv/
+
+# pyenv
+.python-version
+
+# Environments
+.venv
+
+# Database
+inventory.db
+
+# Testing
+.pytest_cache/
+.coverage
+
+# Lock files (uncomment if you don't want to track them)
+uv.lock
