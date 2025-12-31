@@ -4,3 +4,9 @@ from app.schemas.category import (
     CategoryCreate,
     CategoryUpdate,
 )
+from app.schemas.product import (
+    Product,
+    ProductCreate,
+    ProductUpdate,
+    ProductListResponse,
+)

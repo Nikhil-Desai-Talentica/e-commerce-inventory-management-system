@@ -10,9 +10,9 @@ class Category(Base):
     name: Mapped[str] = mapped_column(String(100), unique=True, index=True, nullable=False)
     description: Mapped[str | None] = mapped_column(String(255), nullable=True)
 
-    # relationship placeholder; Product to be defined later
-    # products: Mapped[list["Product"]] = relationship(
-    #     back_populates="category",
-    #     cascade="all, delete-orphan",
-    #     lazy="selectin",
-    # )
+    # relationship placeholder
+    products: Mapped[list["Product"]] = relationship(
+        back_populates="category",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )

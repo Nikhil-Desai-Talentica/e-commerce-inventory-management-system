@@ -8,10 +8,13 @@ from fastapi.testclient import TestClient
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import delete
 
 from app.api.v1.api import api_router
 from app.api import deps
 from app.db.base import Base
+from app.models.category import Category
+from app.models.product import Product
 
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
@@ -44,6 +47,11 @@ async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
     )
     async with async_session() as session:
         yield session
+        # Clean up: delete all records in reverse dependency order
+        # This ensures each test starts with a clean database
+        await session.execute(delete(Product))
+        await session.execute(delete(Category))
+        await session.commit()
         await session.rollback()
 
 

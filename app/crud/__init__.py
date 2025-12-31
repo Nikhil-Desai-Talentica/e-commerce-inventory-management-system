@@ -1,2 +1,2 @@
 # app/crud/__init__.py
-from app.crud import category
+from app.crud import category, product
