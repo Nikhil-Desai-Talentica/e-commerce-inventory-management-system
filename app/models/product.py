@@ -21,3 +21,8 @@ class Product(Base):
         back_populates="products",
         lazy="selectin",
     )
+    skus: Mapped[list["SKU"]] = relationship(
+        back_populates="product",
+        cascade="all, delete-orphan",
+        lazy="selectin",
+    )

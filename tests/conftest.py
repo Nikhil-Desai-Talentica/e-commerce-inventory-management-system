@@ -15,6 +15,7 @@ from app.api import deps
 from app.db.base import Base
 from app.models.category import Category
 from app.models.product import Product
+from app.models.sku import SKU
 
 
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
@@ -49,6 +50,7 @@ async def db_session(test_engine) -> AsyncGenerator[AsyncSession, None]:
         yield session
         # Clean up: delete all records in reverse dependency order
         # This ensures each test starts with a clean database
+        await session.execute(delete(SKU))
         await session.execute(delete(Product))
         await session.execute(delete(Category))
         await session.commit()
